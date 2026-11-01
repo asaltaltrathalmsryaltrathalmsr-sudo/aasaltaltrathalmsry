@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -11,12 +12,10 @@
   <style>
     :root{
       --burgundy:#180b0c;
-      --burgundy-2:#2a0d12;
       --gold:#c9a76c;
       --gold-soft:#f4e2b1;
       --paper:#f7f0e8;
       --ink:#1a1413;
-      --soft:#fbf7f3;
       --shadow:0 20px 44px rgba(18,8,10,.18);
       --radius:18px;
       --heading-font:"Amiri","serif";
@@ -45,10 +44,6 @@
       font-weight:800; box-shadow:0 16px 28px rgba(201,167,108,.22); transition:.2s ease;
     }
     .primary-btn:hover{transform:translateY(-2px)}
-    .ghost-btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 18px; min-height:48px;
-      border:1px solid rgba(201,167,108,.45); color:var(--burgundy); background:rgba(255,255,255,.12); border-radius:12px; font-weight:800;
-    }
 
     .topbar{
       background:linear-gradient(180deg, var(--burgundy), #0f0707); color:#f7eec6;
@@ -329,9 +324,7 @@
     .admin-head h3{
       margin:0; font-family:var(--heading-font); font-size:2.3rem; line-height:1;
     }
-    .admin-body{
-      display:grid; grid-template-columns:230px 1fr; min-height:0;
-    }
+    .admin-body{display:grid; grid-template-columns:230px 1fr; min-height:0;}
     .admin-tabs{
       background:rgba(201,167,108,.06); border-left:1px solid rgba(201,167,108,.18); padding:12px 10px; display:flex; flex-direction:column; gap:8px;
     }
@@ -344,7 +337,6 @@
     .tab-pane.active{display:block}
     .admin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     .field.full{grid-column:1 / -1}
-    .field input[type="color"]{padding:6px; min-height:50px; width:100%}
     .admin-actions{
       display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; margin-top:18px;
     }
@@ -354,9 +346,7 @@
     .save-btn{background:var(--burgundy); color:#fff}
     .danger-btn{background:linear-gradient(135deg,var(--gold),#f1d79b); color:var(--burgundy)}
     .light-btn{background:rgba(201,167,108,.12); color:var(--burgundy)}
-    table{
-      width:100%; border-collapse:collapse; margin-top:18px; background:rgba(255,255,255,.72);
-    }
+    table{width:100%; border-collapse:collapse; margin-top:18px; background:rgba(255,255,255,.72);}
     th,td{
       border:1px solid rgba(201,167,108,.2); padding:10px 12px; text-align:right; font-size:.92rem; vertical-align:middle;
     }
@@ -440,13 +430,13 @@
   </header>
 
   <section class="hero">
-    <img class="hero-bg" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80" alt="غرفة أنتيك">
+    <img id="heroBackgroundImage" class="hero-bg" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80" alt="غرفة أنتيك">
     <div class="hero-overlay"></div>
     <div class="hero-inner">
       <div class="hero-copy">
-        <div class="eyebrow">متحف أنتيك مصري</div>
-        <h1>قطعة من مصر، وحكاية في بيتك</h1>
-        <p>من الصدف الطبيعي إلى الخشب الأصيل، نفتح أمامك قاعة متحف مصري فاخرة مليئة بالأثاث والقطع التراثية الأصلية، لتجعل كل زاوية في بيتك تحمل لمسة مصرية أصيلة.</p>
+        <div class="eyebrow" id="heroEyebrowLabel">متحف أنتيك مصري</div>
+        <h1 id="heroTitleText">قطعة من مصر، وحكاية في بيتك</h1>
+        <p id="heroDescriptionText">من الصدف الطبيعي إلى الخشب الأصيل، نفتح أمامك قاعة متحف مصري فاخرة مليئة بالأثاث والقطع التراثية الأصلية، لتجعل كل زاوية في بيتك تحمل لمسة مصرية أصيلة.</p>
         <div class="hero-actions">
           <a href="#collection" class="primary-btn">تسوق المجموعة</a>
           <a href="#custom" class="ghost-btn" style="color:#fff;border-color:rgba(255,255,255,.22)">اطلب بمقاسك</a>
@@ -525,7 +515,7 @@
     <section class="section story" id="story">
       <div class="container story-grid">
         <div class="story-image">
-          <img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80" alt="حكاية الصنعة">
+          <img id="storyImage" src="https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80" alt="حكاية الصنعة">
         </div>
         <div class="story-copy">
           <div class="section-head" style="margin-bottom:12px">
@@ -607,7 +597,7 @@
           </div>
         </div>
 
-        <div class="brand-quote">أصالة مدى الحياة — من صميم التراث المصري</div>
+        <div class="brand-quote" id="announcementBar">أصالة مدى الحياة — من صميم التراث المصري</div>
       </div>
     </section>
 
@@ -753,7 +743,6 @@
         <button class="tab-btn" data-tab="media">وسائط</button>
         <button class="tab-btn" data-tab="shipping">شحن</button>
         <button class="tab-btn" data-tab="backup">نسخ احتياطي</button>
-        <button class="tab-btn" data-tab="preview">معاينة</button>
       </div>
 
       <div class="admin-content">
@@ -868,28 +857,14 @@
             <div class="field full">
               <label>لوجو المتجر</label>
               <input id="logoInput" placeholder="رابط الصورة أو Base64" />
-              <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
-                <input type="file" id="logoFile" accept="image/*" />
-                <button class="save-btn" id="uploadLogoBtn" type="button">رفع</button>
-              </div>
             </div>
-
             <div class="field full">
               <label>خلفية الغلاف</label>
               <input id="heroImageInput" placeholder="رابط الصورة أو Base64" />
-              <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
-                <input type="file" id="heroFile" accept="image/*" />
-                <button class="save-btn" id="uploadHeroBtn" type="button">رفع</button>
-              </div>
             </div>
-
             <div class="field full">
               <label>صورة حكاية الصنعة</label>
               <input id="storyImageInput" placeholder="رابط الصورة أو Base64" />
-              <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
-                <input type="file" id="storyFile" accept="image/*" />
-                <button class="save-btn" id="uploadStoryBtn" type="button">رفع</button>
-              </div>
             </div>
           </div>
           <div class="admin-actions"><button class="save-btn" id="saveMediaBtn">حفظ الوسائط</button></div>
@@ -917,118 +892,94 @@
             <button class="light-btn" id="downloadBackupBtn">تحميل JSON</button>
           </div>
         </div>
-
-        <div class="tab-pane" id="previewPane">
-          <div class="admin-grid">
-            <div class="field full">
-              <label>معاينة مباشرة</label>
-              <div style="background:#fff;border:1px solid rgba(201,167,108,.2);border-radius:14px;padding:16px">
-                <div class="brand">
-                  <div class="brand-mark"></div>
-                  <div id="previewBrandName" class="brand-name">أصالة التراث المصري</div>
-                </div>
-                <div style="margin-top:12px;color:var(--burgundy);font-weight:800">سطر العنوان: <span id="previewTitleText">قطعة من مصر، وحكاية في بيتك</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </aside>
 
   <div class="notice" id="noticeBox"></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
+    const SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
+    const SUPABASE_ANON_KEY = "YOUR_ANON_KEY";
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
     const defaultProducts = [
-      { id: 1, name: "مجلس عربي فاخر", category: "مجالس", edition: "إصدار فرعوني", price: 14500, oldPrice: 18000, image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: true, description: "مجلس عربي فاخر من الخشب الأصيل مع تفاصيل صدفية فاخرة.", views: 121 },
-      { id: 2, name: "صندوق مجوهرات فخم", category: "صناديق وعلب", edition: "إصدار فاخر", price: 450, oldPrice: 680, image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: false, description: "صندوق مجوهرات فاخر مزخرف بالصدف الطبيعي.", views: 76 },
-      { id: 3, name: "حامل مصحف", category: "حوامل مصحف", edition: "إصدار تراثي", price: 2800, oldPrice: 3600, image: "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: false, description: "حامل مصحف أنيق مستوحى من التراث المصري.", views: 58 },
-      { id: 4, name: "طاولة زهر رمسيس", category: "طاولات زهر وشطرنج", edition: "إصدار فرعوني", price: 85000, oldPrice: 110000, image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80", status: "بالطلب", featured: true, description: "طاولة زهر فاخرة بتصميم فرعوني، صممت للبيوت الفاخرة.", views: 92 },
-      { id: 5, name: "كرسي محمد علي باشا", category: "أثاث ملكي", edition: "إصدار كلاسيكي", price: 55000, oldPrice: 75000, image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: false, description: "كرسي فاخر ينتمي إلى العُهد العثماني والمصري.", views: 70 },
-      { id: 6, name: "طقم مكتب ملكي", category: "أثاث مكتبي", edition: "إصدار ملكي", price: 15000, oldPrice: 20000, image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: false, description: "طقم مكتبي أنيق بتفاصيل خوصية وصدفية.", views: 63 },
-      { id: 7, name: "ترابيزة بوف صلاح الدين", category: "ترابيزات", edition: "إصدار أيوبي", price: 32000, oldPrice: 42000, image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: true, description: "ترابيزة فاخرة بلمسات صدفية تراثية.", views: 81 },
-      { id: 8, name: "عليه فاخرة", category: "ديكورات", edition: "إصدار فني", price: 2200, oldPrice: 3000, image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: false, description: "قطعة ديكور فاخرة من الخشب والصدف.", views: 48 },
-      { id: 9, name: "ساعة حائط ملكية", category: "ساعات حائط", edition: "إصدار ملكي", price: 12000, oldPrice: 16500, image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: true, description: "ساعة حائط فاخرة بشكل ملكي ومصنعة يدويًا.", views: 89 },
-      { id: 10, name: "مبخرة عربية فاخرة", category: "مباخر", edition: "إصدار تراثي", price: 8300, oldPrice: 9800, image: "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: false, description: "مبخرة فاخرة بأسلوب عربي عريق.", views: 57 },
-      { id: 11, name: "لوحة قرآنية", category: "براويز ولوحات قرآنية", edition: "إصدار فخري", price: 5400, oldPrice: 7200, image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: false, description: "لوحة قرآنية مزخرفة بتفاصيل فاخرة.", views: 66 }
+      { id: 1, name: "مجلس عربي فاخر", category: "مجالس", edition: "إصدار فرعوني", price: 14500, old_price: 18000, image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: true, description: "مجلس عربي فاخر من الخشب الأصيل مع تفاصيل صدفية فاخرة.", views: 121 },
+      { id: 2, name: "صندوق مجوهرات فخم", category: "صناديق وعلب", edition: "إصدار فاخر", price: 450, old_price: 680, image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: false, description: "صندوق مجوهرات فاخر مزخرف بالصدف الطبيعي.", views: 76 },
+      { id: 3, name: "حامل مصحف", category: "حوامل مصحف", edition: "إصدار تراثي", price: 2800, old_price: 3600, image: "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: false, description: "حامل مصحف أنيق مستوحى من التراث المصري.", views: 58 },
+      { id: 4, name: "طاولة زهر رمسيس", category: "طاولات زهر وشطرنج", edition: "إصدار فرعوني", price: 85000, old_price: 110000, image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80", status: "بالطلب", featured: true, description: "طاولة زهر فاخرة بتصميم فرعوني، صممت للبيوت الفاخرة.", views: 92 },
+      { id: 5, name: "كرسي محمد علي باشا", category: "أثاث ملكي", edition: "إصدار كلاسيكي", price: 55000, old_price: 75000, image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: false, description: "كرسي فاخر ينتمي إلى العُهد العثماني والمصري.", views: 70 },
+      { id: 6, name: "طقم مكتب ملكي", category: "أثاث مكتبي", edition: "إصدار ملكي", price: 15000, old_price: 20000, image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80", status: "متوفر", featured: false, description: "طقم مكتبي أنيق بتفاصيل خوصية وصدفية.", views: 63 }
     ];
 
-    function defaultState() {
-      return {
-        settings: {
-          shopName: "أصالة التراث المصري",
-          shopSlogan: "أصالة مدى الحياة",
-          shopDescription: "فن يدوي مصري يُحفظ باليد، ويستقر في البيت كحكاية من التراث المصري.",
-          shopWhatsApp: "96551118069",
-          shopEmail: "asalat.al.torath.kw.eg@gmail.com",
-          shopInsta: "https://www.instagram.com/asalat.al.torath.kw.eg",
-          shopFacebook: "https://www.facebook.com/share/1ddcccaFpo/?mibextid=wwXIfr",
-          shopTikTok: "https://www.tiktok.com/@user1178392961513",
-          shopAnnouncement: "أصالة مدى الحياة — من صميم التراث المصري",
-          heroTitle: "قطعة من مصر، وحكاية في بيتك",
-          heroEyebrow: "متحف أنتيك مصري",
-          heroText: "من الصدف الطبيعي إلى الخشب الأصيل، نفتح أمامك قاعة متحف مصري فاخرة مليئة بالأثاث والقطع التراثية الأصلية.",
-          adminEmail: "admin@asala.com",
-          adminPassword: "asala2026"
-        },
-        products: defaultProducts,
-        shipping: {
-          local: "2-4 أيام • مجاني",
-          gulf: "10-15 يوم • حسب الوجهة",
-          global: "10-15 يوم • تغليف خشبي متخصص",
-          note: "أصالة مدى الحياة — من صميم التراث المصري"
-        },
-        media: {
-          logo: "",
-          hero: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80",
-          story: "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80"
-        },
-        design: {
-          primary: "#180b0c",
-          gold: "#c9a76c",
-          paper: "#f7f0e8",
-          text: "#1a1413",
-          radius: "18",
-          textSize: "16",
-          headingSize: "40",
-          shadow: "normal",
-          headingFont: "'Amiri','serif'",
-          bodyFont: "'Cairo','sans-serif'"
-        },
-        filters: { category: "الكل", search: "", sort: "name" }
-      }
-    }
+    const defaultSettings = {
+      id: 1,
+      shop_name: "أصالة التراث المصري",
+      shop_slogan: "أصالة مدى الحياة",
+      shop_description: "فن يدوي مصري يُحفظ باليد، ويستقر في البيت كحكاية من التراث المصري.",
+      whatsapp: "96551118069",
+      email: "asalat.al.torath.kw.eg@gmail.com",
+      instagram: "https://www.instagram.com/asalat.al.torath.kw.eg",
+      facebook: "https://www.facebook.com/share/1ddcccaFpo/?mibextid=wwXIfr",
+      tiktok: "https://www.tiktok.com/@user1178392961513",
+      announcement: "أصالة مدى الحياة — من صميم التراث المصري",
+      hero_title: "قطعة من مصر، وحكاية في بيتك",
+      hero_eyebrow: "متحف أنتيك مصري",
+      hero_text: "من الصدف الطبيعي إلى الخشب الأصيل، نفتح أمامك قاعة متحف مصري فاخرة مليئة بالأثاث والقطع التراثية الأصلية.",
+      admin_email: "admin@asala.com"
+    };
 
-    const state = loadState();
+    const defaultDesign = {
+      id: 1,
+      primary: "#180b0c",
+      gold: "#c9a76c",
+      paper: "#f7f0e8",
+      text: "#1a1413",
+      radius: 18,
+      text_size: 16,
+      heading_size: 40,
+      shadow: "normal",
+      heading_font: "'Amiri','serif'",
+      body_font: "'Cairo','sans-serif'"
+    };
 
-    function loadState() {
-      const saved = JSON.parse(localStorage.getItem("asala_store_v4") || "null");
-      if (!saved) return structuredClone(defaultState());
-      return {
-        settings: { ...defaultState().settings, ...(saved.settings || {}) },
-        products: Array.isArray(saved.products) && saved.products.length ? saved.products : defaultProducts,
-        shipping: { ...defaultState().shipping, ...(saved.shipping || {}) },
-        media: { ...defaultState().media, ...(saved.media || {}) },
-        design: { ...defaultState().design, ...(saved.design || {}) },
-        filters: { category: "الكل", search: "", sort: "name", ...(saved.filters || {}) }
-      };
-    }
+    const defaultShipping = {
+      id: 1,
+      local: "2-4 أيام • مجاني",
+      gulf: "10-15 يوم • حسب الوجهة",
+      global: "10-15 يوم • تغليف خشبي متخصص",
+      note: "أصالة مدى الحياة — من صميم التراث المصري"
+    };
 
-    function saveState() {
-      localStorage.setItem("asala_store_v4", JSON.stringify(state));
-    }
+    const defaultMedia = {
+      id: 1,
+      logo: "",
+      hero: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80",
+      story: "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80"
+    };
+
+    const state = {
+      settings: { ...defaultSettings },
+      products: [...defaultProducts],
+      shipping: { ...defaultShipping },
+      media: { ...defaultMedia },
+      design: { ...defaultDesign }
+    };
+
+    let authUser = null;
 
     function showNotice(msg) {
-      const n = document.getElementById("noticeBox");
-      n.textContent = msg;
-      n.classList.add("show");
-      clearTimeout(showNotice.t);
-      showNotice.t = setTimeout(() => n.classList.remove("show"), 2200);
+      const el = document.getElementById("noticeBox");
+      el.textContent = msg;
+      el.classList.add("show");
+      clearTimeout(showNotice.timeout);
+      showNotice.timeout = setTimeout(() => el.classList.remove("show"), 2500);
     }
 
     function formatMoney(value) {
-      const v = Number(value || 0);
-      return v.toFixed(3).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " د.ك";
+      const num = Number(value || 0);
+      return num.toLocaleString("ar-KW", { minimumFractionDigits: 3, maximumFractionDigits: 3 }) + " د.ك";
     }
 
     function getCategories() {
@@ -1037,13 +988,14 @@
 
     function renderChips() {
       const row = document.getElementById("chipRow");
+      const current = row.dataset.category || "الكل";
       row.innerHTML = getCategories().map(cat => `
-        <button class="chip ${state.filters.category === cat ? "active" : ""}" data-category="${cat}">${cat}</button>
+        <button class="chip ${cat === current ? "active" : ""}" data-category="${cat}">${cat}</button>
       `).join("");
 
       row.querySelectorAll(".chip").forEach(btn => {
         btn.addEventListener("click", () => {
-          state.filters.category = btn.dataset.category;
+          row.dataset.category = btn.dataset.category;
           renderProducts();
           renderChips();
         });
@@ -1052,23 +1004,21 @@
 
     function getVisibleProducts() {
       let list = [...state.products];
-
-      if (state.filters.category && state.filters.category !== "الكل") {
-        list = list.filter(p => p.category === state.filters.category);
+      const category = document.getElementById("chipRow").dataset.category || "الكل";
+      if (category && category !== "الكل") {
+        list = list.filter(p => p.category === category);
       }
-
-      const q = (state.filters.search || "").trim().toLowerCase();
+      const q = (document.getElementById("searchInput").value || "").trim().toLowerCase();
       if (q) {
-        list = list.filter(p => (p.name || "").toLowerCase().includes(q) || (p.category || "").toLowerCase().includes(q));
+        list = list.filter(p => ((p.name || "").toLowerCase().includes(q) || (p.category || "").toLowerCase().includes(q)));
       }
-
-      switch (state.filters.sort) {
-        case "price-desc": list.sort((a,b) => b.price - a.price); break;
-        case "price-asc": list.sort((a,b) => a.price - b.price); break;
-        case "newest": list.sort((a,b) => b.id - a.id); break;
-        default: list.sort((a,b) => (a.name || "").localeCompare(b.name || "", "ar")); break;
+      const sort = document.getElementById("sortSelect").value || "name";
+      switch (sort) {
+        case "price-desc": list.sort((a, b) => Number(b.price) - Number(a.price)); break;
+        case "price-asc": list.sort((a, b) => Number(a.price) - Number(b.price)); break;
+        case "newest": list.sort((a, b) => Number(b.id) - Number(a.id)); break;
+        default: list.sort((a, b) => (a.name || "").localeCompare(b.name || "", "ar")); break;
       }
-
       return list;
     }
 
@@ -1094,7 +1044,7 @@
             <div class="price-block">
               <div>
                 <div class="price">${formatMoney(product.price)}</div>
-                <div class="old-price" style="${product.oldPrice && product.oldPrice > product.price ? "" : "display:none;"}">${formatMoney(product.oldPrice)}</div>
+                <div class="old-price" style="${Number(product.old_price || 0) > Number(product.price || 0) ? "" : "display:none;"}">${formatMoney(product.old_price)}</div>
               </div>
             </div>
             <button class="product-cta" data-product-id="${product.id}">اطلب عبر واتساب</button>
@@ -1118,7 +1068,7 @@
             `الفئة: ${product.category}\n` +
             `ملاحظات: أريد تفاصيل أكثر عن المنتج.`
           );
-          window.open(`https://wa.me/${state.settings.shopWhatsApp}?text=${msg}`, "_blank");
+          window.open(`https://wa.me/${state.settings.whatsapp}?text=${msg}`, "_blank");
         });
       });
     }
@@ -1133,6 +1083,101 @@
     document.getElementById("galleryClose").addEventListener("click", () => {
       document.getElementById("galleryModal").classList.remove("open");
     });
+
+    function setBrandContent() {
+      document.title = state.settings.shop_name || "أصالة التراث المصري";
+
+      const brandNames = document.querySelectorAll(".brand-name");
+      brandNames.forEach(el => {
+        el.textContent = state.settings.shop_name || "أصالة التراث المصري";
+      });
+
+      document.getElementById("heroEyebrowLabel").textContent = state.settings.hero_eyebrow || "متحف أنتيك مصري";
+      document.getElementById("heroTitleText").textContent = state.settings.hero_title || "قطعة من مصر، وحكاية في بيتك";
+      document.getElementById("heroDescriptionText").textContent = state.settings.hero_text || "من الصدف الطبيعي إلى الخشب الأصيل، نفتح أمامك قاعة متحف مصري فاخرة";
+      document.getElementById("announcementBar").textContent = state.settings.announcement || "أصالة مدى الحياة — من صميم التراث المصري";
+
+      if (state.media.hero) {
+        document.getElementById("heroBackgroundImage").src = state.media.hero;
+      }
+      if (state.media.story) {
+        document.getElementById("storyImage").src = state.media.story;
+      }
+      if (state.media.logo) {
+        const brandMarks = document.querySelectorAll(".brand-mark");
+        brandMarks.forEach(mark => {
+          mark.style.background = `url('${state.media.logo}') center/cover no-repeat`;
+          mark.style.borderRadius = "50%";
+        });
+      }
+    }
+
+    function applyDesign() {
+      const root = document.documentElement;
+      root.style.setProperty("--burgundy", state.design.primary || "#180b0c");
+      root.style.setProperty("--gold", state.design.gold || "#c9a76c");
+      root.style.setProperty("--paper", state.design.paper || "#f7f0e8");
+      root.style.setProperty("--ink", state.design.text || "#1a1413");
+      root.style.setProperty("--radius", `${Number(state.design.radius || 18)}px`);
+
+      document.body.style.fontFamily = state.design.body_font || "'Cairo','sans-serif'";
+      document.querySelectorAll(".brand-name, .section-head h2, .hero-copy h1, .product-title, .shipping-card h3, .hero-side h3").forEach(el => {
+        el.style.fontFamily = state.design.heading_font || "'Amiri','serif'";
+      });
+      document.querySelectorAll(".section-head h2").forEach(el => {
+        el.style.fontSize = `clamp(${Number(state.design.heading_size || 40) * 0.7}px, 4vw, ${Number(state.design.heading_size || 40)}px)`;
+      });
+    }
+
+    async function ensureDefaultsInSupabase() {
+      const { data: settings } = await supabase.from("site_settings").select("*").limit(1);
+      if (!settings || settings.length === 0) {
+        await supabase.from("site_settings").upsert(defaultSettings, { onConflict: "id" });
+      }
+
+      const { data: products } = await supabase.from("products").select("*");
+      if (!products || products.length === 0) {
+        await supabase.from("products").upsert(defaultProducts, { onConflict: "id" });
+      }
+
+      const { data: design } = await supabase.from("site_design").select("*").limit(1);
+      if (!design || design.length === 0) {
+        await supabase.from("site_design").upsert(defaultDesign, { onConflict: "id" });
+      }
+
+      const { data: shipping } = await supabase.from("site_shipping").select("*").limit(1);
+      if (!shipping || shipping.length === 0) {
+        await supabase.from("site_shipping").upsert(defaultShipping, { onConflict: "id" });
+      }
+
+      const { data: media } = await supabase.from("site_media").select("*").limit(1);
+      if (!media || media.length === 0) {
+        await supabase.from("site_media").upsert(defaultMedia, { onConflict: "id" });
+      }
+    }
+
+    async function loadDataFromSupabase() {
+      await ensureDefaultsInSupabase();
+
+      const { data: settingsData } = await supabase.from("site_settings").select("*").limit(1);
+      const { data: productsData } = await supabase.from("products").select("*").order("id", { ascending: false });
+      const { data: designData } = await supabase.from("site_design").select("*").limit(1);
+      const { data: shippingData } = await supabase.from("site_shipping").select("*").limit(1);
+      const { data: mediaData } = await supabase.from("site_media").select("*").limit(1);
+
+      state.settings = settingsData && settingsData[0] ? settingsData[0] : { ...defaultSettings };
+      state.products = productsData && productsData.length ? productsData : [...defaultProducts];
+      state.design = designData && designData[0] ? designData[0] : { ...defaultDesign };
+      state.shipping = shippingData && shippingData[0] ? shippingData[0] : { ...defaultShipping };
+      state.media = mediaData && mediaData[0] ? mediaData[0] : { ...defaultMedia };
+
+      renderChips();
+      renderProducts();
+      renderAdminProducts();
+      setBrandContent();
+      fillAdminFields();
+      applyDesign();
+    }
 
     function renderAdminProducts() {
       const tbody = document.getElementById("adminProductsTable");
@@ -1155,14 +1200,16 @@
       tbody.querySelectorAll("[data-edit]").forEach(btn => {
         btn.addEventListener("click", () => loadProductIntoForm(Number(btn.dataset.edit)));
       });
+
       tbody.querySelectorAll("[data-delete]").forEach(btn => {
-        btn.addEventListener("click", () => {
+        btn.addEventListener("click", async () => {
           const id = Number(btn.dataset.delete);
-          state.products = state.products.filter(p => p.id !== id);
-          saveState();
-          renderProducts();
-          renderAdminProducts();
-          renderChips();
+          const { error } = await supabase.from("products").delete().eq("id", id);
+          if (error) {
+            showNotice("حدث خطأ أثناء الحذف");
+            return;
+          }
+          await loadDataFromSupabase();
           showNotice("تم حذف المنتج");
         });
       });
@@ -1178,7 +1225,6 @@
       document.getElementById("productOldPrice").value = "";
       document.getElementById("productDescription").value = "";
       document.getElementById("productImage").value = "";
-      document.getElementById("productImageInput").value = "";
       document.getElementById("saveProductBtn").textContent = "إضافة منتج";
       window.__editingProductId = null;
     }
@@ -1193,126 +1239,337 @@
       document.getElementById("productStatus").value = product.status || "متوفر";
       document.getElementById("productFeatured").value = product.featured ? "1" : "0";
       document.getElementById("productPrice").value = product.price || "";
-      document.getElementById("productOldPrice").value = product.oldPrice || "";
+      document.getElementById("productOldPrice").value = product.old_price || "";
       document.getElementById("productDescription").value = product.description || "";
       document.getElementById("productImage").value = product.image || "";
       document.getElementById("saveProductBtn").textContent = "حفظ التعديلات";
       window.__editingProductId = id;
     }
 
-    function saveProduct() {
-      const name = document.getElementById("productName").value.trim();
-      const category = document.getElementById("productCategory").value;
-      const edition = document.getElementById("productEdition").value.trim();
-      const status = document.getElementById("productStatus").value;
-      const featured = document.getElementById("productFeatured").value === "1";
-      const price = Number(document.getElementById("productPrice").value);
-      const oldPrice = Number(document.getElementById("productOldPrice").value) || price;
-      const description = document.getElementById("productDescription").value.trim();
-      const image = document.getElementById("productImage").value.trim() || "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80";
-
-      if (!name || !price) {
-        showNotice("يرجى تعبئة اسم المنتج والسعر");
-        return;
-      }
-
-      const payload = {
-        id: window.__editingProductId || Date.now(),
-        name,
-        category,
-        edition,
-        status,
-        featured,
-        price,
-        oldPrice,
-        description,
-        image,
-        views: window.__editingProductId ? (state.products.find(p => p.id === window.__editingProductId)?.views || 0) : 0
-      };
-
-      if (window.__editingProductId) {
-        state.products = state.products.map(p => p.id === window.__editingProductId ? payload : p);
-        showNotice("تم تحديث المنتج");
-      } else {
-        state.products.unshift(payload);
-        showNotice("تم إضافة المنتج بنجاح");
-      }
-
-      saveState();
-      renderProducts();
-      renderAdminProducts();
-      renderChips();
-      resetProductForm();
-    }
-
-    function applyDesign() {
-      const root = document.documentElement;
-      root.style.setProperty("--burgundy", document.getElementById("primaryColor").value || "#180b0c");
-      root.style.setProperty("--gold", document.getElementById("goldColor").value || "#c9a76c");
-      root.style.setProperty("--paper", document.getElementById("paperColor").value || "#f7f0e8");
-      root.style.setProperty("--ink", document.getElementById("textColor").value || "#1a1413");
-      root.style.setProperty("--radius", (document.getElementById("cardRadius").value || 18) + "px");
-      document.body.style.fontSize = (document.getElementById("baseTextSize").value || 16) + "px";
-      document.querySelectorAll(".section-head h2").forEach(el => {
-        el.style.fontSize = "clamp(" + (Number(document.getElementById("headingSize").value || 40) * .7) + "px,4vw," + (document.getElementById("headingSize").value || 40) + "px)";
-      });
-
-      const bodyFont = document.getElementById("bodyFont").value;
-      const headingFont = document.getElementById("headingFont").value;
-
-      document.body.style.fontFamily = bodyFont;
-      document.querySelectorAll(".brand-name, .section-head h2, .hero-copy h1, .product-title, .shipping-card h3, .hero-side h3").forEach(el => {
-        el.style.fontFamily = headingFont;
-      });
-
-      showNotice("تم حفظ التصميم");
-    }
-
-    function restoreDefaultDesign() {
-      document.getElementById("primaryColor").value = "#180b0c";
-      document.getElementById("goldColor").value = "#c9a76c";
-      document.getElementById("paperColor").value = "#f7f0e8";
-      document.getElementById("textColor").value = "#1a1413";
-      document.getElementById("cardRadius").value = 18;
-      document.getElementById("baseTextSize").value = 16;
-      document.getElementById("headingSize").value = 40;
-      document.getElementById("headingFont").value = "'Amiri','serif'";
-      document.getElementById("bodyFont").value = "'Cairo','sans-serif'";
-      applyDesign();
-    }
-
     function fillAdminFields() {
-      const s = state.settings;
-      const d = state.design;
-      const sh = state.shipping;
-      const m = state.media;
+      document.getElementById("shopNameField").value = state.settings.shop_name || "";
+      document.getElementById("shopSloganField").value = state.settings.shop_slogan || "";
+      document.getElementById("shopDescriptionField").value = state.settings.shop_description || "";
+      document.getElementById("shopWhatsAppField").value = state.settings.whatsapp || "";
+      document.getElementById("shopEmailField").value = state.settings.email || "";
+      document.getElementById("shopInstaField").value = state.settings.instagram || "";
+      document.getElementById("shopFacebookField").value = state.settings.facebook || "";
+      document.getElementById("shopTikTokField").value = state.settings.tiktok || "";
+      document.getElementById("shopAnnouncementField").value = state.settings.announcement || "";
+      document.getElementById("heroTitleField").value = state.settings.hero_title || "";
+      document.getElementById("heroEyebrowField").value = state.settings.hero_eyebrow || "";
+      document.getElementById("heroTextField").value = state.settings.hero_text || "";
+      document.getElementById("adminEmailField").value = state.settings.admin_email || "admin@asala.com";
 
-      document.getElementById("shopNameField").value = s.shopName || "";
-      document.getElementById("shopSloganField").value = s.shopSlogan || "";
-      document.getElementById("shopDescriptionField").value = s.shopDescription || "";
-      document.getElementById("shopWhatsAppField").value = s.shopWhatsApp || "";
-      document.getElementById("shopEmailField").value = s.shopEmail || "";
-      document.getElementById("shopInstaField").value = s.shopInsta || "";
-      document.getElementById("shopFacebookField").value = s.shopFacebook || "";
-      document.getElementById("shopTikTokField").value = s.shopTikTok || "";
-      document.getElementById("shopAnnouncementField").value = s.shopAnnouncement || "";
-      document.getElementById("heroTitleField").value = s.heroTitle || "";
-      document.getElementById("heroEyebrowField").value = s.heroEyebrow || "";
-      document.getElementById("heroTextField").value = s.heroText || "";
-      document.getElementById("adminEmailField").value = s.adminEmail || "";
-      document.getElementById("loginEmail").value = s.adminEmail || "";
-      document.getElementById("adminPasswordField").value = "";
-      document.getElementById("adminPasswordConfirmField").value = "";
+      document.getElementById("shippingLocal").value = state.shipping.local || "";
+      document.getElementById("shippingGulf").value = state.shipping.gulf || "";
+      document.getElementById("shippingGlobal").value = state.shipping.global || "";
+      document.getElementById("shippingNote").value = state.shipping.note || "";
 
-      document.getElementById("primaryColor").value = d.primary || "#180b0c";
-      document.getElementById("goldColor").value = d.gold || "#c9a76c";
-      document.getElementById("paperColor").value = d.paper || "#f7f0e8";
-      document.getElementById("textColor").value = d.text || "#1a1413";
-      document.getElementById("cardRadius").value = d.radius || 18;
-      document.getElementById("baseTextSize").value = d.textSize || 16;
-      document.getElementById("headingSize").value = d.headingSize || 40;
-      document.getElementById("headingFont").value = d.headingFont || "'Amiri','serif'";
-      document.getElementById("bodyFont").value = d.bodyFont || "'Cairo','sans-serif'";
+      document.getElementById("logoInput").value = state.media.logo || "";
+      document.getElementById("heroImageInput").value = state.media.hero || "";
+      document.getElementById("storyImageInput").value = state.media.story || "";
 
-      document.getElementById("logoInput").value = m.logo || "";
-      document.getElementById("heroImageInput").v
+      document.getElementById("primaryColor").value = state.design.primary || "#180b0c";
+      document.getElementById("goldColor").value = state.design.gold || "#c9a76c";
+      document.getElementById("paperColor").value = state.design.paper || "#f7f0e8";
+      document.getElementById("textColor").value = state.design.text || "#1a1413";
+      document.getElementById("cardRadius").value = state.design.radius || 18;
+      document.getElementById("baseTextSize").value = state.design.text_size || 16;
+      document.getElementById("headingSize").value = state.design.heading_size || 40;
+      document.getElementById("headingFont").value = state.design.heading_font || "'Amiri','serif'";
+      document.getElementById("bodyFont").value = state.design.body_font || "'Cairo','sans-serif'";
+    }
+
+    function bindEvents() {
+      document.getElementById("searchInput").addEventListener("input", renderProducts);
+      document.getElementById("sortSelect").addEventListener("change", renderProducts);
+
+      document.getElementById("customOrderBtn").addEventListener("click", () => {
+        window.open(`https://wa.me/${state.settings.whatsapp}?text=${encodeURIComponent("أرغب في طلب قطعة مخصصة")}`, "_blank");
+      });
+
+      document.getElementById("adminFloatBtn").addEventListener("click", () => {
+        document.getElementById("loginOverlay").classList.add("show");
+      });
+
+      document.getElementById("loginBtn").addEventListener("click", async () => {
+        const email = document.getElementById("loginEmail").value.trim();
+        const password = document.getElementById("loginPassword").value.trim();
+
+        if (!email || !password) {
+          showNotice("يرجى إدخال البريد الإلكتروني وكلمة المرور");
+          return;
+        }
+
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) {
+          showNotice(error.message || "فشل تسجيل الدخول");
+          return;
+        }
+
+        authUser = data.user;
+        document.getElementById("loginOverlay").classList.remove("show");
+        document.getElementById("adminPanel").classList.add("show");
+        showNotice("تم تسجيل الدخول بنجاح");
+        fillAdminFields();
+      });
+
+      document.getElementById("logoutBtn").addEventListener("click", async () => {
+        await supabase.auth.signOut();
+        authUser = null;
+        document.getElementById("adminPanel").classList.remove("show");
+        showNotice("تم تسجيل الخروج");
+      });
+
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".tab-btn").forEach(x => x.classList.remove("active"));
+          btn.classList.add("active");
+          document.querySelectorAll(".tab-pane").forEach(x => x.classList.remove("active"));
+          document.getElementById(btn.dataset.tab + "Pane").classList.add("active");
+        });
+      });
+
+      document.getElementById("saveGeneralBtn").addEventListener("click", async () => {
+        const payload = {
+          id: 1,
+          shop_name: document.getElementById("shopNameField").value.trim(),
+          shop_slogan: document.getElementById("shopSloganField").value.trim(),
+          shop_description: document.getElementById("shopDescriptionField").value.trim(),
+          whatsapp: document.getElementById("shopWhatsAppField").value.trim(),
+          email: document.getElementById("shopEmailField").value.trim(),
+          instagram: document.getElementById("shopInstaField").value.trim(),
+          facebook: document.getElementById("shopFacebookField").value.trim(),
+          tiktok: document.getElementById("shopTikTokField").value.trim(),
+          announcement: document.getElementById("shopAnnouncementField").value.trim(),
+          hero_title: document.getElementById("heroTitleField").value.trim(),
+          hero_eyebrow: document.getElementById("heroEyebrowField").value.trim(),
+          hero_text: document.getElementById("heroTextField").value.trim(),
+          admin_email: document.getElementById("adminEmailField").value.trim()
+        };
+
+        const { error } = await supabase.from("site_settings").upsert(payload, { onConflict: "id" });
+        if (error) {
+          showNotice("حدث خطأ أثناء حفظ الإعدادات");
+          return;
+        }
+        await loadDataFromSupabase();
+        showNotice("تم حفظ الإعدادات بنجاح");
+      });
+
+      document.getElementById("saveCredentialsBtn").addEventListener("click", async () => {
+        const email = document.getElementById("adminEmailField").value.trim();
+        const pass = document.getElementById("adminPasswordField").value.trim();
+        const confirmPass = document.getElementById("adminPasswordConfirmField").value.trim();
+
+        if (!email) {
+          showNotice("يرجى إدخال بريد الدخول");
+          return;
+        }
+
+        if (pass || confirmPass) {
+          if (pass !== confirmPass) {
+            showNotice("كلمة المرور غير متطابقة");
+            return;
+          }
+          const { error } = await supabase.auth.updateUser({ email, password: pass });
+          if (error) {
+            showNotice(error.message || "فشل تحديث بيانات الدخول");
+            return;
+          }
+        } else {
+          const { error } = await supabase.auth.updateUser({ email });
+          if (error) {
+            showNotice(error.message || "فشل تحديث البريد الإلكتروني");
+            return;
+          }
+        }
+
+        document.getElementById("loginEmail").value = email;
+        document.getElementById("adminPasswordField").value = "";
+        document.getElementById("adminPasswordConfirmField").value = "";
+        showNotice("تم تحديث بيانات الدخول");
+      });
+
+      document.getElementById("saveProductBtn").addEventListener("click", async () => {
+        const payload = {
+          id: Number(window.__editingProductId || Date.now()),
+          name: document.getElementById("productName").value.trim(),
+          category: document.getElementById("productCategory").value,
+          edition: document.getElementById("productEdition").value.trim(),
+          status: document.getElementById("productStatus").value,
+          featured: document.getElementById("productFeatured").value === "1",
+          price: Number(document.getElementById("productPrice").value || 0),
+          old_price: Number(document.getElementById("productOldPrice").value || 0),
+          description: document.getElementById("productDescription").value.trim(),
+          image: document.getElementById("productImage").value.trim() || "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80",
+          views: Number(window.__editingProductId ? (state.products.find(p => p.id === Number(window.__editingProductId))?.views || 0) : 0)
+        };
+
+        if (!payload.name || !payload.price) {
+          showNotice("يرجى إدخال اسم المنتج والسعر");
+          return;
+        }
+
+        const { error } = await supabase.from("products").upsert(payload, { onConflict: "id" });
+        if (error) {
+          showNotice("حدث خطأ أثناء حفظ المنتج");
+          return;
+        }
+        await loadDataFromSupabase();
+        resetProductForm();
+        showNotice("تم حفظ المنتج بنجاح");
+      });
+
+      document.getElementById("resetProductFormBtn").addEventListener("click", resetProductForm);
+
+      document.getElementById("saveDesignBtn").addEventListener("click", async () => {
+        const payload = {
+          id: 1,
+          primary: document.getElementById("primaryColor").value,
+          gold: document.getElementById("goldColor").value,
+          paper: document.getElementById("paperColor").value,
+          text: document.getElementById("textColor").value,
+          radius: Number(document.getElementById("cardRadius").value || 18),
+          text_size: Number(document.getElementById("baseTextSize").value || 16),
+          heading_size: Number(document.getElementById("headingSize").value || 40),
+          shadow: document.getElementById("shadowStrength").value,
+          heading_font: document.getElementById("headingFont").value,
+          body_font: document.getElementById("bodyFont").value
+        };
+
+        const { error } = await supabase.from("site_design").upsert(payload, { onConflict: "id" });
+        if (error) {
+          showNotice("حدث خطأ أثناء حفظ التصميم");
+          return;
+        }
+        await loadDataFromSupabase();
+        showNotice("تم حفظ التصميم");
+      });
+
+      document.getElementById("restoreDesignBtn").addEventListener("click", async () => {
+        const { error } = await supabase.from("site_design").upsert(defaultDesign, { onConflict: "id" });
+        if (error) {
+          showNotice("حدث خطأ أثناء الاستعادة");
+          return;
+        }
+        await loadDataFromSupabase();
+        showNotice("تم استعادة التصميم الافتراضي");
+      });
+
+      document.getElementById("saveMediaBtn").addEventListener("click", async () => {
+        const payload = {
+          id: 1,
+          logo: document.getElementById("logoInput").value.trim(),
+          hero: document.getElementById("heroImageInput").value.trim(),
+          story: document.getElementById("storyImageInput").value.trim()
+        };
+        const { error } = await supabase.from("site_media").upsert(payload, { onConflict: "id" });
+        if (error) {
+          showNotice("حدث خطأ أثناء حفظ الوسائط");
+          return;
+        }
+        await loadDataFromSupabase();
+        showNotice("تم حفظ الوسائط");
+      });
+
+      document.getElementById("saveShippingBtn").addEventListener("click", async () => {
+        const payload = {
+          id: 1,
+          local: document.getElementById("shippingLocal").value.trim(),
+          gulf: document.getElementById("shippingGulf").value.trim(),
+          global: document.getElementById("shippingGlobal").value.trim(),
+          note: document.getElementById("shippingNote").value.trim()
+        };
+        const { error } = await supabase.from("site_shipping").upsert(payload, { onConflict: "id" });
+        if (error) {
+          showNotice("حدث خطأ أثناء حفظ الشحن");
+          return;
+        }
+        await loadDataFromSupabase();
+        showNotice("تم حفظ بيانات الشحن");
+      });
+
+      document.getElementById("backupBtn").addEventListener("click", () => {
+        const payload = {
+          settings: state.settings,
+          products: state.products,
+          design: state.design,
+          shipping: state.shipping,
+          media: state.media
+        };
+        document.getElementById("backupArea").value = JSON.stringify(payload, null, 2);
+        showNotice("تم إنشاء نسخة احتياطية");
+      });
+
+      document.getElementById("downloadBackupBtn").addEventListener("click", () => {
+        const payload = JSON.stringify({
+          settings: state.settings,
+          products: state.products,
+          design: state.design,
+          shipping: state.shipping,
+          media: state.media
+        }, null, 2);
+
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "asala_backup.json";
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      document.getElementById("productImageInput").addEventListener("change", () => {
+        const file = document.getElementById("productImageInput").files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => document.getElementById("productImage").value = reader.result;
+        reader.readAsDataURL(file);
+      });
+
+      document.getElementById("uploadProductImageBtn").addEventListener("click", () => {
+        const value = document.getElementById("productImage").value.trim();
+        if (!value) {
+          showNotice("يرجى اختيار صورة أولًا");
+          return;
+        }
+        showNotice("تم تجهيز رابط الصورة");
+      });
+    }
+
+    async function checkSession() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session && session.user) {
+        authUser = session.user;
+        document.getElementById("adminPanel").classList.add("show");
+      }
+    }
+
+    function setupRealtime() {
+      const tables = ["site_settings", "products", "site_design", "site_shipping", "site_media"];
+
+      tables.forEach(table => {
+        const channel = supabase
+          .channel(`realtime:${table}`)
+          .on("postgres_changes", { event: "*", schema: "public", table }, () => {
+            loadDataFromSupabase();
+          })
+          .subscribe();
+      });
+    }
+
+    async function init() {
+      bindEvents();
+      document.getElementById("chipRow").dataset.category = "الكل";
+      document.getElementById("sortSelect").value = "name";
+      await loadDataFromSupabase();
+      setupRealtime();
+      await checkSession();
+    }
+
+    window.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
