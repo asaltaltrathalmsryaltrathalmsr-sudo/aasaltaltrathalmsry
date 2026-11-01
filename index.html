@@ -34,17 +34,11 @@
     .primary-btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border:none;border-radius:12px;background:linear-gradient(135deg,#c9a76c,#f1d9a0);color:var(--burgundy);font-weight:800;box-shadow:0 16px 28px rgba(201,167,108,.22)}
     .ghost-btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border:1px solid rgba(201,167,108,.45);background:rgba(255,255,255,.12);border-radius:12px;color:var(--burgundy);font-weight:800}
 
-    .topbar{
-      background:linear-gradient(180deg, var(--burgundy), #0f0707); color:#f7eec6; height:42px; overflow:hidden; position:sticky; top:0; z-index:120;
-    }
-    .topbar-marquee{
-      display:flex;align-items:center;height:42px;white-space:nowrap;width:max-content;gap:42px;animation:marquee 18s linear infinite;padding-left:20px;font-weight:700;letter-spacing:.04em;font-size:.94rem;
-    }
+    .topbar{background:linear-gradient(180deg, var(--burgundy), #0f0707); color:#f7eec6; height:42px; overflow:hidden; position:sticky; top:0; z-index:120}
+    .topbar-marquee{display:flex;align-items:center;height:42px;white-space:nowrap;width:max-content;gap:42px;animation:marquee 18s linear infinite;padding-left:20px;font-weight:700;letter-spacing:.04em;font-size:.94rem}
     @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    .header{
-      position:sticky; top:42px; z-index:110; background:rgba(244,239,232,.9); backdrop-filter:blur(10px); border-bottom:1px solid rgba(201,167,108,.22);
-    }
+    .header{position:sticky; top:42px; z-index:110; background:rgba(244,239,232,.9); backdrop-filter:blur(10px); border-bottom:1px solid rgba(201,167,108,.22)}
     .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:82px;gap:18px}
     .brand{display:flex;align-items:center;gap:12px}
     .brand-mark{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #f9e9bf, #d8b265 40%, #9f7a3c 100%);border:2px solid rgba(255,255,255,.7);position:relative;display:grid;place-items:center}
@@ -66,6 +60,7 @@
     .hero-side .badge{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(201,167,108,.12);color:#f2dca3;font-weight:800;font-size:.8rem;margin-bottom:12px}
     .hero-side h3{margin:0;font-size:2.1rem;font-family:var(--heading-font);color:#fff;line-height:1.04}
     .hero-side p{margin:12px 0 0;color:rgba(255,255,255,.86);line-height:1.9;font-size:.96rem}
+
     .trust-strip{padding:24px 0 0}
     .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .trust-card{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.7);border:1px solid rgba(201,167,108,.2);border-radius:14px;padding:16px 14px}
@@ -494,10 +489,12 @@
             <div class="field full"><label>الوصف</label><textarea id="productDescription"></textarea></div>
             <div class="field full"><label>الصورة</label><input id="productImage" /></div>
           </div>
+
           <div class="admin-actions">
             <button class="danger-btn" id="resetProductFormBtn" type="button">مسح النموذج</button>
             <button class="save-btn" id="saveProductBtn" type="button">إضافة منتج</button>
           </div>
+
           <table>
             <thead>
               <tr>
@@ -821,7 +818,8 @@
       ];
 
       for (const [key, value] of entries) {
-        await supabase.from('settings').upsert([{ key, value }], { onConflict: 'key' });
+        const { error } = await supabase.from('settings').upsert([{ key, value }], { onConflict: 'key' });
+        if (error) console.error(error);
       }
 
       await loadSettings();
@@ -835,7 +833,8 @@
         ['logo', document.getElementById('logoMediaInput').value]
       ];
       for (const [name, value] of rows) {
-        await supabase.from('media').upsert([{ name, value }], { onConflict: 'name' });
+        const { error } = await supabase.from('media').upsert([{ name, value }], { onConflict: 'name' });
+        if (error) console.error(error);
       }
       await loadMedia();
       showNotice('تم حفظ الوسائط');
@@ -849,7 +848,8 @@
         ['note', document.getElementById('shippingNote').value]
       ];
       for (const [key, value] of rows) {
-        await supabase.from('shipping').upsert([{ key, value }], { onConflict: 'key' });
+        const { error } = await supabase.from('shipping').upsert([{ key, value }], { onConflict: 'key' });
+        if (error) console.error(error);
       }
       await loadShipping();
       showNotice('تم حفظ الشحن');
@@ -910,6 +910,7 @@
       document.getElementById('loginBtn').addEventListener('click', loginAdmin);
       document.getElementById('adminFloatBtn').addEventListener('click', () => document.getElementById('loginOverlay').classList.add('show'));
       document.getElementById('logoutBtn').addEventListener('click', logoutAdmin);
+
       document.getElementById('customOrderBtn').addEventListener('click', () => {
         const msg = encodeURIComponent(
           'السلام عليكم، أريد طلب قطعة مخصصة.\n\n' +
@@ -922,15 +923,25 @@
         );
         window.open(`https://wa.me/${settings.shop_whatsapp || '96551118069'}?text=${msg}`, '_blank');
       });
+
       document.getElementById('saveGeneralBtn').addEventListener('click', saveSettings);
       document.getElementById('saveMediaBtn').addEventListener('click', saveMedia);
       document.getElementById('saveShippingBtn').addEventListener('click', saveShipping);
       document.getElementById('saveProductBtn').addEventListener('click', saveProduct);
       document.getElementById('resetProductFormBtn').addEventListener('click', resetProductForm);
+
       document.getElementById('searchInput').addEventListener('input', (e) => { currentFilters.search = e.target.value; renderProducts(); });
       document.getElementById('sortSelect').addEventListener('change', (e) => { currentFilters.sort = e.target.value; renderProducts(); });
       document.getElementById('galleryClose').addEventListener('click', () => document.getElementById('galleryModal').classList.remove('open'));
-      document.querySelectorAll('.tab-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active')); document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active')); btn.classList.add('active'); document.getElementById(`${btn.dataset.tab}Pane`).classList.add('active'); }); });
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById(`${btn.dataset.tab}Pane`).classList.add('active');
+        });
+      });
     }
 
     async function init() {
@@ -940,6 +951,7 @@
       await loadMedia();
       await loadProducts();
       populateAdminForms();
+
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         document.getElementById('adminPanel').classList.add('show');
